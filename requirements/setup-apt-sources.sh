@@ -6,6 +6,7 @@
 #   - Docker CE (docker.list)
 #   - Google Chrome (google-chrome.list)
 #   - NodeSource Node.js 20.x (nodesource.sources)
+#   - GitHub CLI (github-cli.list)
 
 set -e
 
@@ -37,6 +38,11 @@ cp "$KEYS_DIR/nodesource.gpg" /usr/share/keyrings/nodesource.gpg
 chmod 644 /usr/share/keyrings/nodesource.gpg
 echo "  [+] NodeSource anahtarı -> /usr/share/keyrings/nodesource.gpg"
 
+# GitHub CLI GPG anahtarı
+cp "$KEYS_DIR/githubcli-archive-keyring.gpg" /etc/apt/keyrings/githubcli-archive-keyring.gpg
+chmod 644 /etc/apt/keyrings/githubcli-archive-keyring.gpg
+echo "  [+] GitHub CLI anahtarı -> /etc/apt/keyrings/githubcli-archive-keyring.gpg"
+
 echo ""
 echo "=== APT kaynak dosyaları kuruluyor ==="
 
@@ -48,6 +54,9 @@ echo "  [+] Google Chrome -> /etc/apt/sources.list.d/google-chrome.list"
 
 cp "$SOURCES_DIR/nodesource.sources" /etc/apt/sources.list.d/nodesource.sources
 echo "  [+] NodeSource -> /etc/apt/sources.list.d/nodesource.sources"
+
+cp "$SOURCES_DIR/github-cli.list" /etc/apt/sources.list.d/github-cli.list
+echo "  [+] GitHub CLI -> /etc/apt/sources.list.d/github-cli.list"
 
 echo ""
 echo "=== APT paket listesi güncelleniyor ==="
